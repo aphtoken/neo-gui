@@ -166,10 +166,12 @@
       <HintPath>..\packages\Microsoft.Win32.Primitives.4.3.0\lib\net46\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Neo, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Neo.2.3.3\lib\net461\Neo.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\neo\neo\bin\Debug\net461\Neo.dll</HintPath>
     </Reference>
     <Reference Include="Neo.VM, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Neo.VM.2.0.3\lib\net461\Neo.VM.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\neo\neo\bin\Debug\net461\Neo.VM.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -378,6 +380,12 @@
     </Compile>
     <Compile Include="UI\IssueDialog.Designer.cs">
       <DependentUpon>IssueDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MintTokensDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MintTokensDialog.Designer.cs">
+      <DependentUpon>MintTokensDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\OptionsDialog.cs">
       <SubType>Form</SubType>
@@ -721,6 +729,9 @@
     <EmbeddedResource Include="UI\MainForm.zh-Hans.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MintTokensDialog.resx">
+      <DependentUpon>MintTokensDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\OpenWalletDialog.es-ES.resx">
       <DependentUpon>OpenWalletDialog.cs</DependentUpon>
