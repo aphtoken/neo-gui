@@ -37,7 +37,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.修改密码CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重建钱包数据库RToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restoreAccountsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.交易TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +57,6 @@
             this.选举EToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mintTokensMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.查看帮助VToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.官网WToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,6 +64,7 @@
             this.开发人员工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AntSharesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -116,7 +115,8 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.manageSmartContractMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtNotifications = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -126,15 +126,18 @@
             this.contextMenuStrip2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.钱包WToolStripMenuItem,
             this.交易TToolStripMenuItem,
             this.高级AToolStripMenuItem,
-            this.帮助HToolStripMenuItem});
+            this.帮助HToolStripMenuItem,
+            this.testToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -146,7 +149,6 @@
             this.toolStripSeparator1,
             this.修改密码CToolStripMenuItem,
             this.重建钱包数据库RToolStripMenuItem,
-            this.restoreAccountsToolStripMenuItem,
             this.toolStripSeparator2,
             this.退出XToolStripMenuItem});
             this.钱包WToolStripMenuItem.Name = "钱包WToolStripMenuItem";
@@ -177,15 +179,9 @@
             // 
             // 重建钱包数据库RToolStripMenuItem
             // 
-            resources.ApplyResources(this.重建钱包数据库RToolStripMenuItem, "重建钱包数据库RToolStripMenuItem");
             this.重建钱包数据库RToolStripMenuItem.Name = "重建钱包数据库RToolStripMenuItem";
+            resources.ApplyResources(this.重建钱包数据库RToolStripMenuItem, "重建钱包数据库RToolStripMenuItem");
             this.重建钱包数据库RToolStripMenuItem.Click += new System.EventHandler(this.重建钱包数据库RToolStripMenuItem_Click);
-            // 
-            // restoreAccountsToolStripMenuItem
-            // 
-            resources.ApplyResources(this.restoreAccountsToolStripMenuItem, "restoreAccountsToolStripMenuItem");
-            this.restoreAccountsToolStripMenuItem.Name = "restoreAccountsToolStripMenuItem";
-            this.restoreAccountsToolStripMenuItem.Click += new System.EventHandler(this.restoreAccountsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -245,9 +241,7 @@
             this.toolStripSeparator11,
             this.选举EToolStripMenuItem,
             this.toolStripSeparator9,
-            this.optionsToolStripMenuItem,
-            this.mintTokensMenuItem,
-            this.manageSmartContractMenuItem});
+            this.optionsToolStripMenuItem});
             this.高级AToolStripMenuItem.Name = "高级AToolStripMenuItem";
             resources.ApplyResources(this.高级AToolStripMenuItem, "高级AToolStripMenuItem");
             // 
@@ -319,12 +313,6 @@
             resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
-            // mintTokensMenuItem
-            // 
-            this.mintTokensMenuItem.Name = "mintTokensMenuItem";
-            resources.ApplyResources(this.mintTokensMenuItem, "mintTokensMenuItem");
-            this.mintTokensMenuItem.Click += new System.EventHandler(this.mintTokensMenuItem_Click);
-            // 
             // 帮助HToolStripMenuItem
             // 
             this.帮助HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -370,6 +358,12 @@
             resources.ApplyResources(this.关于AntSharesToolStripMenuItem, "关于AntSharesToolStripMenuItem");
             this.关于AntSharesToolStripMenuItem.Click += new System.EventHandler(this.关于AntSharesToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            resources.ApplyResources(this.testToolStripMenuItem, "testToolStripMenuItem");
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -389,6 +383,7 @@
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
@@ -405,6 +400,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.创建新地址NToolStripMenuItem,
             this.导入私钥IToolStripMenuItem,
@@ -528,6 +524,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.lbl_height,
@@ -593,6 +590,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -651,6 +649,7 @@
             // 
             // contextMenuStrip2
             // 
+            this.contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewCertificateToolStripMenuItem,
             this.删除DToolStripMenuItem1});
@@ -714,6 +713,7 @@
             // 
             // contextMenuStrip3
             // 
+            this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(18, 18);
             this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1});
             this.contextMenuStrip3.Name = "contextMenuStrip3";
@@ -725,11 +725,17 @@
             resources.ApplyResources(this.toolStripMenuItem1, "toolStripMenuItem1");
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // manageSmartContractMenuItem
+            // tabPage4
             // 
-            this.manageSmartContractMenuItem.Name = "manageSmartContractMenuItem";
-            resources.ApplyResources(this.manageSmartContractMenuItem, "manageSmartContractMenuItem");
-            this.manageSmartContractMenuItem.Click += new System.EventHandler(this.manageSmartContractMenuItem_Click);
+            this.tabPage4.Controls.Add(this.txtNotifications);
+            resources.ApplyResources(this.tabPage4, "tabPage4");
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtNotifications
+            // 
+            resources.ApplyResources(this.txtNotifications, "txtNotifications");
+            this.txtNotifications.Name = "txtNotifications";
             // 
             // MainForm
             // 
@@ -753,6 +759,8 @@
             this.contextMenuStrip2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.contextMenuStrip3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -830,7 +838,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem restoreAccountsToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripMenuItem requestCertificateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewCertificateToolStripMenuItem;
@@ -845,8 +852,9 @@
         private System.Windows.Forms.ToolStripMenuItem invokeContractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lockToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripMenuItem mintTokensMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem manageSmartContractMenuItem;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox txtNotifications;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

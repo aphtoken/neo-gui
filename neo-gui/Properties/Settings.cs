@@ -1,14 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Neo.Network;
 using System.Linq;
 
 namespace Neo.Properties
 {
     internal sealed partial class Settings
     {
-        public string DataDirectoryPath { get; }
-        public string CertCachePath { get; }
-        public ushort NodePort { get; }
-        public ushort WsPort { get; }
+        public PathsSettings Paths { get; }
+        public P2PSettings P2P { get; }
         public BrowserSettings Urls { get; }
         public ContractSettings Contracts { get; }
 
@@ -21,12 +20,34 @@ namespace Neo.Properties
                 Save();
             }
             IConfigurationSection section = new ConfigurationBuilder().AddJsonFile("config.json").Build().GetSection("ApplicationConfiguration");
-            this.DataDirectoryPath = section.GetSection("DataDirectoryPath").Value;
-            this.CertCachePath = section.GetSection("CertCachePath").Value;
-            this.NodePort = ushort.Parse(section.GetSection("NodePort").Value);
-            this.WsPort = ushort.Parse(section.GetSection("WsPort").Value);
+            this.Paths = new PathsSettings(section.GetSection("Paths"));
+            this.P2P = new P2PSettings(section.GetSection("P2P"));
             this.Urls = new BrowserSettings(section.GetSection("Urls"));
             this.Contracts = new ContractSettings(section.GetSection("Contracts"));
+        }
+    }
+
+    internal class PathsSettings
+    {
+        public string Chain { get; }
+        public string CertCache { get; }
+
+        public PathsSettings(IConfigurationSection section)
+        {
+            this.Chain = string.Format(section.GetSection("Chain").Value, Message.Magic.ToString("X8"));
+            this.CertCache = section.GetSection("CertCache").Value;
+        }
+    }
+
+    internal class P2PSettings
+    {
+        public ushort Port { get; }
+        public ushort WsPort { get; }
+
+        public P2PSettings(IConfigurationSection section)
+        {
+            this.Port = ushort.Parse(section.GetSection("Port").Value);
+            this.WsPort = ushort.Parse(section.GetSection("WsPort").Value);
         }
     }
 
