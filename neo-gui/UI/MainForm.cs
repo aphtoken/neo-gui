@@ -289,6 +289,8 @@ namespace Neo.UI
                 }
                 Blockchain.PersistCompleted += Blockchain_PersistCompleted;
                 Program.LocalNode.Start(Settings.Default.P2P.Port, Settings.Default.P2P.WsPort);
+
+                //Blockchain.Notify += Blockchain_Notify;
                 StateReader.Notify += StateReader_Notify;
                 StateReader.Log += StateReader_Log;
             });
@@ -1046,23 +1048,32 @@ namespace Neo.UI
             }
         }
 
+        private UInt160 dexContractScriptHash = UInt160.Parse("0xf38fb0024a3909b6358f1ca6f01bb0d9d504873e");
         private void StateReader_Log(object sender, LogEventArgs e)
         {
-            return;
+            if (e.ScriptHash != dexContractScriptHash)
+            {
+                return;
+            }
+
             BeginInvoke(new Action(() => txtNotifications.Text += $"{e.ScriptHash} - Log - {String.Join(" / ", e.Message)}{Environment.NewLine}"));
         }
         private void StateReader_Notify(object sender, NotifyEventArgs e)
         {
             try
             {
-                return;
-                var stateItems = e.State as IList<StackItem>;// .GetArray();
+                if (e.ScriptHash != dexContractScriptHash)
+                {
+                    return;
+                }
+
+                var stateItems = e.State as IList<StackItem>;
                 if (stateItems == null)
                 {
                     return;
                 }
 
-                if (Blockchain.Default.Height >= Blockchain.Default.HeaderHeight - 100)
+                if (Blockchain.Default.Height >= Blockchain.Default.HeaderHeight - 10000)
                 {
                     OutputNotification(e.ScriptHash, stateItems);
                 }
@@ -1110,41 +1121,20 @@ namespace Neo.UI
             BeginInvoke(new Action(() => txtNotifications.Text += $"{DateTime.Now:MM/dd/yy HH:mm:ss} {scriptHash} - Notify{Environment.NewLine}     {String.Join(" / ", message)}{Environment.NewLine}"));
         }
 
-        private void testToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Program.LocalNode.Relay(null);
-
-
-            byte[] script;
-            UInt160 script_hash = UInt160.Parse("2909c26cac2fcbd3f49c2660c5a41dd9131ec9b1");
-            using (ScriptBuilder sb = new ScriptBuilder())
-            {
-                sb.EmitAppCall(script_hash, "getBalance", 
-                        UInt160.Parse("155153854ed377549a72cc1643e481bf25b48390"),
-                        UInt160.Parse("4cb238cca4811a0b41cd59b38db35d5d71ad560e"));
-                script = sb.ToArray();
-            }
-
-            ApplicationEngine engine = ApplicationEngine.Run(script);            
-            if (engine.State.HasFlag(VMState.FAULT))
-            {
-                return;
-            }
-
-            var balance = engine.EvaluationStack.Pop().GetBigInteger();
-        }
-
-        public static string selectedAddress;
+        public static string SelectedAccountAddress { get; set; }
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count == 0)
+            if (listView1.SelectedItems.Count >= 1)
             {
-                selectedAddress = null;
+                SelectedAccountAddress = listView1.SelectedItems[0].Text;
             }
             else
             {
-                selectedAddress = listView1.SelectedItems[0].Text;
+                SelectedAccountAddress = null;
             }
         }
+
+
+
     }
 }

@@ -324,12 +324,6 @@
   <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Help</value>
   </data>
-  <data name="testToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 23</value>
-  </data>
-  <data name="testToolStripMenuItem.Text" xml:space="preserve">
-    <value>Test</value>
-  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -883,16 +877,19 @@
     <value>Fill</value>
   </data>
   <data name="txtNotifications.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+    <value>0, 0</value>
+  </data>
+  <data name="txtNotifications.MaxLength" type="System.Int32, mscorlib">
+    <value>327670</value>
   </data>
   <data name="txtNotifications.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="txtNotifications.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1018, 586</value>
+    <value>1024, 592</value>
   </data>
   <data name="txtNotifications.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtNotifications.Name" xml:space="preserve">
     <value>txtNotifications</value>
@@ -908,9 +905,6 @@
   </data>
   <data name="tabPage4.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 28</value>
-  </data>
-  <data name="tabPage4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage4.Size" type="System.Drawing.Size, System.Drawing">
     <value>1024, 592</value>
@@ -1461,12 +1455,6 @@
     <value>关于AntSharesToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;关于AntSharesToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Name" xml:space="preserve">
-    <value>testToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;testToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;columnHeader1.Name" xml:space="preserve">

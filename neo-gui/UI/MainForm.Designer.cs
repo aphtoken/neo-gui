@@ -64,7 +64,6 @@
             this.开发人员工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.关于AntSharesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -136,8 +135,7 @@
             this.钱包WToolStripMenuItem,
             this.交易TToolStripMenuItem,
             this.高级AToolStripMenuItem,
-            this.帮助HToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.帮助HToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
@@ -358,12 +356,6 @@
             resources.ApplyResources(this.关于AntSharesToolStripMenuItem, "关于AntSharesToolStripMenuItem");
             this.关于AntSharesToolStripMenuItem.Click += new System.EventHandler(this.关于AntSharesToolStripMenuItem_Click);
             // 
-            // testToolStripMenuItem
-            // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            resources.ApplyResources(this.testToolStripMenuItem, "testToolStripMenuItem");
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
-            // 
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -383,7 +375,6 @@
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.DoubleClick += new System.EventHandler(this.listView1_DoubleClick);
             // 
             // columnHeader1
@@ -734,6 +725,7 @@
             // 
             // txtNotifications
             // 
+            this.txtNotifications.AcceptsReturn = true;
             resources.ApplyResources(this.txtNotifications, "txtNotifications");
             this.txtNotifications.Name = "txtNotifications";
             // 
@@ -854,7 +846,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox txtNotifications;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 

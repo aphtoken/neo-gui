@@ -3,9 +3,7 @@ using Neo.IO.Json;
 using Neo.Properties;
 using Neo.SmartContract;
 using Neo.VM;
-using Neo.Wallets;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,7 +19,7 @@ namespace Neo.UI
         private ContractParameter[] parameters;
         private ContractParameter[] parameters_abi;
 
-        private static readonly Fixed8 net_fee = Fixed8.FromDecimal(0.000m);
+        private static readonly Fixed8 net_fee = Fixed8.FromDecimal(0.001m);
 
         public InvokeContractDialog(InvocationTransaction tx = null)
         {
@@ -31,25 +29,6 @@ namespace Neo.UI
             {
                 tabControl1.SelectedTab = tabPage2;
                 textBox6.Text = tx.Script.ToHexString();
-            }
-
-            foreach (UInt256 asset_id in Program.CurrentWallet.FindUnspentCoins().Select(p => p.Output.AssetId).Distinct())
-            {
-                AssetState state = Blockchain.Default.GetAssetState(asset_id);
-                cmbAsset.Items.Add(new Neo.Wallets.AssetDescriptor(asset_id));
-            }
-
-            foreach (string s in Settings.Default.NEP5Watched)
-            {
-                UInt160 asset_id = UInt160.Parse(s);
-                try
-                {
-                    cmbAsset.Items.Add(new AssetDescriptor(asset_id));
-                }
-                catch (ArgumentException)
-                {
-                    continue;
-                }
             }
         }
 
@@ -141,8 +120,6 @@ namespace Neo.UI
             button5.Enabled = textBox6.TextLength > 0;
         }
 
-        private static readonly byte[] GAS = { 231, 45, 40, 105, 121, 238, 108, 177, 183, 230, 93, 253, 223, 178, 227, 132, 16, 11, 141, 20, 142, 119, 88, 222, 66, 228, 22, 139, 113, 121, 44, 96 };
-
         private void button5_Click(object sender, EventArgs e)
         {
             byte[] script;
@@ -158,41 +135,9 @@ namespace Neo.UI
             if (tx == null) tx = new InvocationTransaction();
             tx.Version = 1;
             tx.Script = script;
-
-            if (tx.Attributes == null)
-            {
-                tx.Attributes = new TransactionAttribute[]
-                {
-                    //new TransactionAttribute{ Usage = TransactionAttributeUsage.Remark10, Data = Wallet.ToScriptHash(MainForm.selectedAddress).ToArray()},
-                    //new TransactionAttribute{ Usage = TransactionAttributeUsage.Script, Data = UInt160.Parse(invokerScriptHash).ToArray()}
-                };
-            }
-
+            if (tx.Attributes == null) tx.Attributes = new TransactionAttribute[0];
             if (tx.Inputs == null) tx.Inputs = new CoinReference[0];
-
-            List<TransactionOutput> outputs = new List<TransactionOutput>();
-            if (cmbAsset.SelectedIndex >= 0 && string.IsNullOrWhiteSpace(txtAssetQuantity.Text) == false)
-            {
-                AssetDescriptor asset = cmbAsset.SelectedItem as AssetDescriptor;
-                outputs.Add(new TransactionOutput
-                {
-                    AssetId = asset.AssetId as UInt256,
-                    ScriptHash = script_hash,
-                    Value = new Fixed8((long)new BigDecimal(Fixed8.Parse(txtAssetQuantity.Text).GetData(), 8).Value)
-                });
-            }
-            /*
-
-            outputs.Add(new TransactionOutput
-            {
-                AssetId = new UInt256(GAS),
-                ScriptHash = UInt160.Parse(invokerScriptHash),
-                Value = Fixed8.FromDecimal(0.000m)
-            });
-            */
-
-            tx.Outputs = outputs.ToArray();
-
+            if (tx.Outputs == null) tx.Outputs = new TransactionOutput[0];
             if (tx.Scripts == null) tx.Scripts = new Witness[0];
             ApplicationEngine engine = ApplicationEngine.Run(tx.Script, tx);
             StringBuilder sb = new StringBuilder();
